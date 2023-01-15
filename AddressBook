@@ -1,5 +1,4 @@
 class person{
-    console.log("Wellcome in addressbook")
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email){
         this.firstName=firstName;
         this.lastName=lastName;
@@ -102,7 +101,7 @@ const prompt = require('prompt-sync')();
 let contactList = new Array();
 let t = true;
 while (t) {
-    let choice = prompt("\t--Menu-- \n1. Create Contact \n2. Disply Contacts \n3. Edit Contact \n4. Exit\n");
+    let choice = prompt("\t--Menu-- \n1. Create Contact \n2. Disply Contacts \n3. Edit Contact \n4. Delete Contact \n5 Exiting ");
     if (choice === "1") {
         addContact();
     }
@@ -113,9 +112,12 @@ while (t) {
         editContact();
     }
     if (choice === "4") {
+       deleteContact
+    } 
+    if (choice === "5") {
         t = false;
     }
-    if (choice != 1 && choice != 2 && choice != 3) {
+    if (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5) {
         console.log("Enter a Valid input")
     }
 }
@@ -300,6 +302,15 @@ function editContact(){
             
             }
             
+        }
+    }
+}
+function deleteContact(){
+    let userGivenFirstName = prompt('Enter first name to edit contact\n')
+    for(let i =0;i<contactList.length;i++){        
+        if(userGivenFirstName==contactList[i].firstName){
+            contactList.splice(i, 1); 
+            i--;
         }
     }
 }
