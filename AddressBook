@@ -15,87 +15,8 @@ class person{
     setCity(city){
         this.city=city;
     }
-    get firstName11() {
-        return this.firstName;
-    }
-
-    get lastName11() {
-        return this.lastName;
-    }
-
-    get city11() {
-        return this.city;
-    }
-
-    get state11() {
-        return this.state;
-    }
-
-    get zip11() {
-        return this.zip;
-    }
-
-    get phoneNumber11() {
-        return this.phoneNumber;
-    }
-
-    get email11() {
-        return this.email;
-    }
-
-    set firstName22(firstName) {
-       
-            this._firstName = firstName;
-       
-    }
-
-    set lastName22(lastName) {
-       
-            this._lastName = lastName;
-        
-    }
-
-    set address22(address) {
-       
-            this._address = address;
-        
-    }
-
-    set city22(city) {
-       
-            this._city = city;
-       
-    }
-
-    set state22(state) {
-       
-            this._state = state;
-    }
-
-    set zip22(zip) {
-        if (zipRegex.test(zip))
-            this._zip = zip;
-        else
-            throw "ZIP is Incorrect";
-    }
-
-    set phoneNumber22(phoneNumber) {
-        if (phoneNumberRegex.test(phoneNumber))
-            this._phoneNumber = phoneNumber;
-        else
-            throw "PHONE NUMBER is Incorrect";
-    }
-
-    set email22(email) {
-        if (emailRegex.test(email))
-            this._email = email;
-        else
-            throw "EMAIL ADDRESS is Incorrect";
-    }
-
     
 }
-const ok=new person;
 const prompt = require('prompt-sync')();
 //contactlist Array to save new contacts
 let contactList = new Array();
@@ -167,7 +88,7 @@ function addContact(){
     while(t){
     fName = prompt("Enter First name ");
         t = checkName(fName);
-       ok.firstName22=fName;
+        this.firstName=fName;
         if(t==true){
             console.log("Invalid Input");
         }
@@ -177,7 +98,7 @@ function addContact(){
     while(t){
         lastName = prompt("Enter Last name ");
         t = checkName(lastName);
-        ok.lastName22=lastName;
+        this.lastName=lastName;
         if(t==true){
             console.log("Invalid Input");
         }
@@ -187,7 +108,7 @@ function addContact(){
     while(t){
         address = prompt("Enter Address ");
         t = checkAddress(address);
-        ok.address22=address;
+        this.address=address;
         if(t==true){
             console.log("Invalid Input");
         }
@@ -197,7 +118,7 @@ function addContact(){
     while(t){
         city = prompt("Enter City name ");
         t = checkName(city);
-        ok.city22=city;
+        this.city=city;
         if(t==true){
             console.log("Invalid Input ");
         }
@@ -207,7 +128,7 @@ function addContact(){
     while(t){
         state = prompt("Enter State Name ");
         t = checkName(state);
-        ok.state22=state;
+        this.state=state;
         if(t==true){
             console.log("Invalid Input");
         }
@@ -217,7 +138,7 @@ function addContact(){
     while(t){
         zip = prompt("Enter Zip ");
         t = checkZip(zip);
-        ok.zip22=zip;
+        this.zip=zip;
         if(t==true){
             console.log("Invalid Input ");
         }
@@ -227,7 +148,7 @@ function addContact(){
     while(t){
         phoneNumber = prompt("Enter Phone Number Name " );
         t = checkPhoneNumber(phoneNumber);
-        ok.phoneNumber22=phoneNumber;
+        this.phoneNumber=phoneNumber;
         if(t==true){
             console.log("Invalid Input");
         }
@@ -237,13 +158,13 @@ function addContact(){
     while(t){
         email = prompt("Enter Email Name  ");
         t = checkEmail(email);
-        ok.email22=email;
+        this .email=email;
         if(t==true){
             console.log("Invalid Input ");
         }
     }
     t=true;
-    const obj1=new person(ok.firstName11,ok.lastName11,ok.city11,ok.state11,ok.zip11,ok.phoneNumber11,ok.email11)
+    const obj1=new person(fName,lastName,address,city,state,zip,phoneNumber,email)
     contactList.push(obj1);
     let Ketan = new person('Ketan','Chindarkar','Hill Road','Mumbai','Maharashtra','400015','9967945885','ketan12@gmail.com');
     let Yash = new person('Yash','Ghade','Farm House','Panji','Goa','404715','7897894851','yash@gmail.com');
@@ -253,6 +174,15 @@ function addContact(){
 
 function displaycontact(){
     console.log(contactList);
+}
+function deleteContact(){
+    let userGivenFirstName = prompt('Enter first name to edit contact\n')
+    for(let i =0;i<contactList.length;i++){        
+        if(userGivenFirstName==contactList[i].firstName){
+            contactList.pop(person);
+            i--;
+        }
+    }
 }
 
 function editContact(){
@@ -302,15 +232,6 @@ function editContact(){
             
             }
             
-        }
-    }
-}
-function deleteContact(){
-    let userGivenFirstName = prompt('Enter first name to edit contact\n')
-    for(let i =0;i<contactList.length;i++){        
-        if(userGivenFirstName==contactList[i].firstName){
-            contactList.splice(i, 1); 
-            i--;
         }
     }
 }
