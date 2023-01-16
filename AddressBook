@@ -43,6 +43,16 @@ while (t) {
     }
 }
 function addContact(){
+    function checkNameExit(userGivenFirstName){
+        for(let i =0;i<contactList.length;i++){        
+            if(userGivenFirstName==contactList[i].firstName){  
+                console.log('Name already exit, create contact with different name')  
+                return true;
+            }else{
+                return false;
+            }
+        }
+    }
     function checkName(name){
         let namePattern = RegExp('[A-Z]{1}[a-z]{2,}')
         if(namePattern.test(name)){
@@ -88,6 +98,7 @@ function addContact(){
     while(t){
     fName = prompt("Enter First name ");
         t = checkName(fName);
+        t=checkNameExit(fName);
         this.firstName=fName;
         if(t==true){
             console.log("Invalid Input");
